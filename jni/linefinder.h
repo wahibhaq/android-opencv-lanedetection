@@ -1,21 +1,3 @@
-/*------------------------------------------------------------------------------------------*\
-   Lane Detection
-
-   General idea and some code modified from:
-   chapter 7 of Computer Vision Programming using the OpenCV Library. 
-   by Robert Laganiere, Packt Publishing, 2011.
-
-   This program is free software; permission is hereby granted to use, copy, modify, 
-   and distribute this source code, or portions thereof, for any purpose, without fee, 
-   subject to the restriction that the copyright notice may not be removed 
-   or altered from any source or altered source distribution. 
-   The software is released on an as-is basis and without any warranties of any kind. 
-   In particular, the software is not guaranteed to be fault-tolerant or free from failure. 
-   The author disclaims all warranties with regard to this software, any use, 
-   and any consequent failure, is purely the responsibility of the user.
- 
-   Copyright (C) 2013 Jason Dorweiler, www.transistor.io
-\*------------------------------------------------------------------------------------------*/
 
 #if !defined LINEF
 #define LINEF
@@ -61,13 +43,6 @@ class LineFinder {
 	  // distance to shift the drawn lines down when using a ROI
 	  int shift;
 
-	  //Mean Lateral Position value
-	  //static double sumLateralPosition;
-	  //static double meanLateralPosition;
-	  //static int countLateralPosition;
-
-	  //Standard Deviation of Lateral Position (SDLP)
-	  //double* arrayLateralPosition;
 
 
 
@@ -77,10 +52,7 @@ class LineFinder {
 	  // no gap, no mimimum length
 	  LineFinder() : deltaRho(1), deltaTheta(PI/180), minVote(10), minLength(0.), maxGap(0.){}
 
-	  //LineFinder() : deltaRho(1), deltaTheta(PI/180), minVote(10), minLength(0.), maxGap(0.) {
-	  //, sumLateralPosition(0), meanLateralPosition0(0), countLateralPosition(0){
-		  //arrayLateralPosition = new double[500];
-	  //}
+
 
 	  // Set the resolution of the accumulator
 	  void setAccResolution(double dRho, double dTheta) {
@@ -135,10 +107,9 @@ class LineFinder {
 			  line( image, pt1, pt2, color, 10 );
 			  //cout << " HoughP line: ("<< pt1 <<"," << pt2 << ")\n";
 
-			  //__android_log_print(ANDROID_LOG_ERROR, "Linefinder.h", "%s", "inside drawdetectedlines()");
-			  //__android_log_print(ANDROID_LOG_ERROR, "HoughP line point 1", "Hpt1x : %d, Hpt1y : %d", (*it2)[0],(*it2)[1]+shift);
-			  //__android_log_print(ANDROID_LOG_ERROR, "HoughP line point 2", "Hpt2x : %d, Hpt2y : %d", (*it2)[2],(*it2)[3]+shift);
+			  ///This chunk of code is commented to disable SDLP calculation and display of its values///
 
+			  /*
 			  int Houghpt2x = (*it2)[2];
 
 			  //__android_log_print(ANDROID_LOG_ERROR, "HoughP line point 2", "Lane Type: %s, Value: %d", "Left Most Lane", Houghpt2x);
@@ -146,7 +117,8 @@ class LineFinder {
 			  int laneStatus = -1;
 			  stringstream stream;
 
-			  /*if(Houghpt2x >= 100 && Houghpt2x < 180 )
+
+			  if(Houghpt2x >= 100 && Houghpt2x < 180 )
 			  {
 				  laneStatus = 3;
 				  __android_log_print(ANDROID_LOG_ERROR, "HoughP line point 2", "Lane Type: %s, Value: %d", "Left Lane", Houghpt2x);

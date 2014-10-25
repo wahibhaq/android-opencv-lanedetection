@@ -3,8 +3,6 @@
 #include <opencv2/core/core.hpp>
 #include <opencv2/features2d/features2d.hpp>
 
-////LaneDetect.cpp code///
-
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/objdetect/objdetect.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
@@ -42,12 +40,6 @@ JNIEXPORT void JNICALL Java_tum_andrive_lanedetection_LaneDetector_mainDelegate
 	Mat image;
 	resize(imageOrig, image, Size(),0.25,0.25, cv::INTER_LINEAR); //to reduce it to quarter of size
 
-	///////
-
-	//original value was 200 //lines greater than houghVote are returned
-	//100 was in middle and lines were partially accurate. but with 50 its quite fast but many other edges are also detected now
-	//with 100 framerate was 0.50 fps on portrait and with 50 it is 1.20
-	//int houghVote = 200;
 
 	int houghVote = houghValue;
    	__android_log_print(ANDROID_LOG_ERROR, "LANEDETECTOR++", "hough value : %d", houghVote);
@@ -61,7 +53,6 @@ JNIEXPORT void JNICALL Java_tum_andrive_lanedetection_LaneDetector_mainDelegate
 
 		//cout << "Frame Size = " << dWidth << "x" << dHeight <<  endl;
 
-		//Size frameSize(static_cast<int>(dWidth), static_cast<int>(dHeight));
 
 	  if (image.empty())
 	  {
@@ -166,36 +157,10 @@ JNIEXPORT void JNICALL Java_tum_andrive_lanedetection_LaneDetector_mainDelegate
 				Point pt2((rho-result.rows*sin(theta))/cos(theta),result.rows);//y = row count
 
 
-				//line( result, pt1, pt2, Scalar(0,255,255), 8); //yellow
-
 				//This draws lines but without ends and in shape of X
-				line( hough, pt1, pt2, Scalar(255), 10); //this is working and shows red lines //orig thinkness : 8
+				line( hough, pt1, pt2, Scalar(255), 10); //this is working and shows red lines of thickness 10
 
-				/////new code ///////
-				/*
-				float theta_degree = (theta * 180)/PI;
-				__android_log_print(ANDROID_LOG_INFO, "LANEDETECTOR", "rho : %f", rho);
-				__android_log_print(ANDROID_LOG_INFO, "LANEDETECTOR", "theta : %f", theta_degree);
 
-				//Right most lane
-				if(theta_degree >= 120 && theta_degree <= 129)
-				{
-					__android_log_print(ANDROID_LOG_INFO, "LANEDETECTOR", "pt1-right : %f , %d", rho/cos(theta), 0);
-					__android_log_print(ANDROID_LOG_INFO, "LANEDETECTOR", "pt2-right: %f , %d", (rho-result.rows*sin(theta))/cos(theta), result.rows);
-				}
-				//middle lane
-				else if(theta_degree >= 50 && theta_degree <= 59)
-				{
-					__android_log_print(ANDROID_LOG_INFO, "LANEDETECTOR", "pt1-middle : %f , %d", rho/cos(theta), 0);
-					__android_log_print(ANDROID_LOG_INFO, "LANEDETECTOR", "pt2-middle : %f , %d", (rho-result.rows*sin(theta))/cos(theta), result.rows);
-				}
-				//left most lane
-				else if(theta_degree >= 40 && theta_degree <= 49)
-				{
-					__android_log_print(ANDROID_LOG_INFO, "LANEDETECTOR", "pt1-left : %f , %d", rho/cos(theta), 0);
-					__android_log_print(ANDROID_LOG_INFO, "LANEDETECTOR", "pt2-left : %f , %d", (rho-result.rows*sin(theta))/cos(theta), result.rows);
-				}
-				*/
 
 			}
 
@@ -270,29 +235,18 @@ JNIEXPORT void JNICALL Java_tum_andrive_lanedetection_LaneDetector_mainDelegate
 
 
 
-		// stringstream stream;
-		//stringstream stream;
-		//stream << "Seg# : " << lines.size();
-
-
 		//to show the number of line segments found in a frame
 		//putText(image, stream.str(), Point(10,image.rows-10), 4, 1, Scalar(0,255,255),0);
 
 
 		lines.clear();
 
-
-
-		 //Hough ends here
+		//Hough Processing ends here
 
 
 
 		resize(image, image, Size(),4,4, cv::INTER_LINEAR);
 		output = image;
-
-
-
-
 
 		//__android_log_print(ANDROID_LOG_ERROR, "LANEDETECTOR++", "%s", "end mainDelegate");
 

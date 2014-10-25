@@ -1,7 +1,8 @@
-/*------------------------------------------------------------------------------------------*\
-Logging lane metrics to help in understanding driver's behavior aka SDLP
+/**
+ * Logging lane metrics to help in understanding driver's behavior aka SDLP
+ */
 
-\*------------------------------------------------------------------------------------------*/
+
 
 #if !defined LINEF
 #define LINEF
