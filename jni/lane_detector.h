@@ -10,21 +10,12 @@ extern "C" {
 #endif
 /*
  * Class:     tum_andrive_lanedetection_LaneDetector
- * Method:    nativeThreshold
+ * Method:    mainDelegate
  * Signature: (JJ)V
  */
 
-/*JNIEXPORT void JNICALL Java_tum_andrive_lanedetection_LaneDetector_nativeThreshold
-  (JNIEnv *, jobject, jlong, jlong);
-JNIEXPORT void JNICALL Java_tum_andrive_lanedetection_LaneDetector_nativeCannyEdge
-  (JNIEnv *, jobject, jlong, jlong);
-  */
-
 JNIEXPORT void JNICALL Java_tum_andrive_lanedetection_LaneDetector_mainDelegate
   (JNIEnv *env, jobject obj, jlong in, jlong out, jint houghValue);
-
-
-
 
 
 #ifdef __cplusplus

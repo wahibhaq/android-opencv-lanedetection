@@ -1,3 +1,4 @@
+
 package tum.andrive.lanedetection;
 
 import android.app.Activity;
@@ -10,6 +11,12 @@ import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
+/**
+ * The Activity for Vertical Slider display to take input of Hough Transform value
+ * 
+ * @author Wahib-Ul-Haq
+ *
+ */
 
 public class VerticalSliderActivity extends Activity {
 
@@ -23,7 +30,6 @@ public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
 
-
         setContentView(R.layout.activity_selection);
         
         sliderText = (TextView) findViewById(R.id.verticalSeekbarText);
@@ -34,6 +40,7 @@ public void onCreate(Bundle savedInstanceState) {
 
 			@Override
 			public void onClick(View arg0) {
+				
 				// TODO Auto-generated method stub
 				Intent intent = new Intent(getApplicationContext(), LaneDetector.class); 
 			    intent.putExtra("houghvalue", sliderText.getText().toString());

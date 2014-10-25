@@ -24,37 +24,6 @@
 using namespace std;
 using namespace cv;
 
-/*
-JNIEXPORT void JNICALL Java_tum_andrive_lanedetection_LaneDetector_nativeThreshold
-  (JNIEnv *env, jobject obj, jlong in, jlong out)
-{
-    Mat& frame = *(Mat*)in;
-    Mat gray_scale = Mat(frame.rows, frame.cols, CV_8UC4);
-    Mat& output = *(Mat*)out;
-    cvtColor(frame, gray_scale, CV_RGB2GRAY);
-    threshold(gray_scale, output, 128, 255, 4);
-
-}
-
-JNIEXPORT void JNICALL Java_tum_andrive_lanedetection_LaneDetector_nativeCannyEdge
-  (JNIEnv *env, jobject obj, jlong in, jlong out)
-{
-    Mat& frame = *(Mat*)in;
-    Mat gray_scale = Mat(frame.rows, frame.cols, CV_8UC4);
-    Mat& output = *(Mat*)out;
-
-
-    Mat edges;
-    cvtColor(frame, edges, CV_BGR2GRAY);
-    GaussianBlur(edges, edges, Size(7,7), 1.5, 1.5);
-    Canny(edges, output, 0, 30, 3);
-}*/
-
-////////////////////////
-
-
-
-
 
 JNIEXPORT void JNICALL Java_tum_andrive_lanedetection_LaneDetector_mainDelegate
   (JNIEnv *env, jobject obj, jlong in, jlong out, jint houghValue)

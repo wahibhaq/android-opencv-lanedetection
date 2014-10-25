@@ -124,7 +124,6 @@ class LineFinder {
 		  vector<Vec4i>::const_iterator it2= lines.begin();
 
 
-     		//LaneMetrics lanemetrics;
 
 		  while (it2!=lines.end()) {
 		
@@ -132,7 +131,7 @@ class LineFinder {
 			  Point pt2((*it2)[2],(*it2)[3]+shift); //start coordinate
 
 
-			  	 //This is to draw the line with end points
+			  //This is to draw the line with end points
 			  line( image, pt1, pt2, color, 10 );
 			  //cout << " HoughP line: ("<< pt1 <<"," << pt2 << ")\n";
 
@@ -147,7 +146,7 @@ class LineFinder {
 			  int laneStatus = -1;
 			  stringstream stream;
 
-			  if(Houghpt2x >= 100 && Houghpt2x < 180 )
+			  /*if(Houghpt2x >= 100 && Houghpt2x < 180 )
 			  {
 				  laneStatus = 3;
 				  __android_log_print(ANDROID_LOG_ERROR, "HoughP line point 2", "Lane Type: %s, Value: %d", "Left Lane", Houghpt2x);
@@ -183,16 +182,6 @@ class LineFinder {
 			  int lowerBound = 100; int upperBound = 450; //range of x coordinate of Hought Point
 			  double bestLateralPosition = avgCarWidth/2 + (((singleLaneWidth/2) - avgCarWidth)/2); // 0.915 - single lane //1.65 - when 2 lanes were considered
 
-			  /*
-			  double bestLateralPosition = avgCarWidth/2 + (((singleLaneWidth/2) - avgCarWidth)/2); // 0.915 - single lane //1.65 - when 2 lanes were considered
-			  double temp = ((bestLateralPosition * Houghpt2x)/upperBound);
-			  double lateralPosition  = 0;
-
-			  if(laneStatus == 1 || laneStatus == 2)
-				  lateralPosition = singleLaneWidth + temp;
-			  else if(laneStatus == 3)
-				  lateralPosition = (singleLaneWidth*2) - temp;
-			  */
 
 			 //x coordinate of Hough point is inverseley proportional to lateral position
 			  double k = upperBound * bestLateralPosition;
@@ -249,7 +238,11 @@ class LineFinder {
 
 
 
+
+
 			  }
+
+			  */
 
 
 			  ++it2;	

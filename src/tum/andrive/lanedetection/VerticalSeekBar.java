@@ -1,4 +1,7 @@
-
+/*
+ * Custom implementation of Seekbar Widget
+ * 
+ */
 
 package tum.andrive.lanedetection;
 

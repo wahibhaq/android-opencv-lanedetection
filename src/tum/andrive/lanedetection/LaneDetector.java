@@ -1,9 +1,3 @@
-/*-----------------------------------------------------------------------------------------*\
-Wahib-ul-Haq
-
-
- \*----------------------------------------------------------------------------------------*/
-
  
 package tum.andrive.lanedetection;
 
@@ -25,6 +19,16 @@ import android.view.SurfaceView;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+/**
+ * 
+ * This is the main Activity which takes Camera input, captures frame, interact with OpenCV library, process frame and display overlays 
+ * on lanes detection. It uses Hough Value which is provided by the VerticalSliderActivity. This java activity acts as the Controller
+ * here and core image processing work is done by the C++ files
+ * 
+ * @author Wahib-Ul-Haq
+ *
+ */
+
 public class LaneDetector extends Activity implements CvCameraViewListener2 {
 
 	private CameraBridgeViewBase mOpenCvCameraView;
@@ -41,7 +45,7 @@ public class LaneDetector extends Activity implements CvCameraViewListener2 {
 				case LoaderCallbackInterface.SUCCESS:
 				{
 					Log.i(TAG, "OpenCV loaded successfully");
-					System.loadLibrary("LaneDetectionNative");
+					System.loadLibrary("LaneDetectionNative"); //library module name defined in Android.mk
 					mOpenCvCameraView.enableView();
 					
 				}
@@ -58,6 +62,7 @@ public class LaneDetector extends Activity implements CvCameraViewListener2 {
 	
 	@Override
 	public void onResume() {
+		
 		super.onResume();
 		OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_2_4_6, this, mLoaderCallback);
 	}
@@ -68,6 +73,7 @@ public class LaneDetector extends Activity implements CvCameraViewListener2 {
     	Log.i(TAG, "called onCreate");
         super.onCreate(savedInstanceState);
     	getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+    	
         setContentView(R.layout.activity_lane_test);
         mOpenCvCameraView = (CameraBridgeViewBase) findViewById(R.id.AndriveLaneView);
         mOpenCvCameraView.setVisibility(SurfaceView.VISIBLE);
@@ -95,32 +101,15 @@ public class LaneDetector extends Activity implements CvCameraViewListener2 {
 		}
     };
     
-//    android.hardware.Camera.Size set_resolution(){  
-//        List<android.hardware.Camera.Size> mResolutionList = mOpenCvCameraView.getw
-//     int lowest= mResolutionList.size()-1;  
-//     android.hardware.Camera.Size resolution = mResolutionList.get(lowest);  
-//     // This has worked fine with my phone, but not sure the resolutions are sorted  
-//     mOpenCvCameraView.setResolution(resolution);  
-//     return resolution;   
-//   }  
-    
     
     @Override
     public void onCameraViewStarted(int width, int height) {
     	
-    	 //android.hardware.Camera.Size r= set_resolution();   
-         //Do we know if the two of them (view and camera) match  
-         //screen_w=r.width;  
-         //screen_h=r.height;  
-         
-      //mRgba = new Mat(screen_w, screen_h, CvType.CV_8UC4);  
-      //mGrey = new Mat(screen_w, screen_h, CvType.CV_8UC1); 
-      
       Log.v("Screen Resolution","Height: "+height+" Width: "+width); 
-      //mRgba = new Mat(width, height, CvType.CV_8UC4);
       
     	
-    	img = new Mat(height, width, CvType.CV_8UC4);
+   	img = new Mat(height, width, CvType.CV_8UC4);
+ 
     };
     
     @Override
@@ -131,17 +120,6 @@ public class LaneDetector extends Activity implements CvCameraViewListener2 {
     @Override
     public Mat onCameraFrame(CvCameraViewFrame inputFrame) {
     	
-    	//nativeThreshold(inputFrame.rgba().getNativeObjAddr(), img.getNativeObjAddr());
-    	//nativeCannyEdge(inputFrame.rgba().getNativeObjAddr(), img.getNativeObjAddr());
-    	
-    	
-    	//Mat low_res = new Mat(screen_w, screen_h, CvType.CV_8UC1);  
-        // 1280 x 720  
-        //Log.v("MyActivity","width: "+screen_w+" height: "+screen_h);  
-        //Imgproc.resize(mGrey,low_res,new Size(),0.25,0.25,Imgproc.INTER_LINEAR);  
-        //Imgproc.equalizeHist( low_res, low_res );   
-        
-    	//Imgproc.resize(inputFrame.rgba(), inputFrame.rgba(), new Size(), 0.25, 0.25, Imgproc.INTER_LINEAR);
     	
     	mainDelegate(inputFrame.rgba().getNativeObjAddr(), img.getNativeObjAddr(), houghValue);
     	    	
@@ -157,12 +135,7 @@ public class LaneDetector extends Activity implements CvCameraViewListener2 {
         return true;
     }
     
-    //public native void nativeThreshold(long input, long output);
-    
-    //public native void nativeCannyEdge(long input, long output);
-    
     public native void mainDelegate(long input, long output, int houghValue);
-    //public native int processImage(long output);
 
         
 
