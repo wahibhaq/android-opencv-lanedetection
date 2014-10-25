@@ -1,0 +1,105 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+    xmlns:tools="http://schemas.android.com/tools"
+
+
+    android:layout_width="match_parent"
+
+
+    android:layout_height="match_parent" >
+
+
+    <tum.andrive.lanedetection.VerticalSeekBar
+
+
+        android:id="@+id/verticalSeekbar"
+
+
+        android:max="200"
+
+
+        android:layout_width="wrap_content" 
+
+
+        android:layout_height="fill_parent"
+
+
+        android:layout_alignParentRight="true"
+
+
+        android:layout_marginRight="20dp"
+
+
+        android:layout_marginTop="30dp"
+
+
+        android:layout_marginBottom="30dp"
+
+
+        android:progress="150" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/verticalSeekbar"
+        android:layout_marginRight="28dp"
+        android:layout_toLeftOf="@+id/verticalSeekbar"
+        android:text="200"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/verticalSeekbar"
+        android:layout_alignRight="@+id/textView2"
+        android:text="0"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textView2"
+        android:layout_toLeftOf="@+id/verticalSeekbarText"
+        android:padding="20dp"
+        android:text="Select a Hough Value and click the button. Low Hough value means faster execution but less accuracy and vice versa"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/verticalSeekbarText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/textView1"
+        android:padding="10dp"
+        android:text="150"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="24dp"
+         />
+
+    <Button
+        android:id="@+id/forwardButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView1"
+        android:layout_alignBottom="@+id/textView1"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="145dp"
+        android:text="Click here to move forward !" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/verticalSeekbarText"
+        android:layout_toLeftOf="@+id/verticalSeekbarText"
+        android:text="Next screen shows detected boundaries with red lines. It also shows values of lateral position, lane status and SDLP."
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="16dp" 
+        android:padding="20dp"/>
+
+</RelativeLayout>
