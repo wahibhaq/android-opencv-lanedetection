@@ -1,4 +1,17 @@
 
+/**
+ * 
+ * @author Wahib-Ul-Haq, wahib.tech@gmail.com, 2014
+ * 
+ *
+ * contains code taken from:
+ * 
+ * "Lane detection using OpenCV" 
+ * https://github.com/jdorweiler/lane-detection
+ * Acknowledgments: jdorweiler
+ * Contact: jason@transistor.io
+ */
+
 #if !defined LINEF
 #define LINEF
 

@@ -1,3 +1,18 @@
+
+/**
+ * 
+ * @author Wahib-Ul-Haq, wahib.tech@gmail.com, 2014
+ * 
+ *
+ * contains code taken from:
+ * 
+ * "Lane detection using OpenCV" 
+ * https://github.com/jdorweiler/lane-detection
+ * Acknowledgments: jdorweiler
+ * Contact: jason@transistor.io
+ */
+
+
 #include <jni.h>
 #include "lane_detector.h"
 #include <opencv2/core/core.hpp>

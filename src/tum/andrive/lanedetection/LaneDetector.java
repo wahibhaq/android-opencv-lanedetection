@@ -24,8 +24,14 @@ import android.widget.Toast;
  * on lanes detection. It uses Hough Value which is provided by the VerticalSliderActivity. This java activity acts as the Controller
  * here and core image processing work is done by the C++ files
  * 
- * @author Wahib-Ul-Haq
+ * @author Wahib-Ul-Haq, wahib.tech@gmail.com, 2014
  *
+ * contains code taken from:
+ * 
+ * "Lane detection using OpenCV" 
+ * https://github.com/jdorweiler/lane-detection
+ * Acknowledgments: jdorweiler
+ * Contact: jason@transistor.io
  */
 
 public class LaneDetector extends Activity implements CvCameraViewListener2 {
