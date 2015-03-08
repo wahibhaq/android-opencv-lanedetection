@@ -5,3 +5,4 @@ This project was developed as a semester project during my MSc. Computer Science
 
 This Android project is using the core lane detection module from project "Lane detection using OpenCV" http://www.transistor.io/revisiting-lane-detection-using-opencv.html . I have ported, implemented it in Android NDK, modified and added several optimization techniques to make it efficient for smartphones.
 
+Project Report can be downloaded at https://www.academia.edu/11329425/Computer_vision_on_nomadic_devices_for_human_factors_engineering
